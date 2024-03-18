@@ -8,9 +8,9 @@ const port = 3000;
 // Configuração do MySQL
 const connection = mysql.createConnection({
   host: 'localhost',
-  user: process.env.MYSQL_USER, // Usa variáveis de ambiente
-  password: process.env.MYSQL_PASSWORD,
-  database: process.env.MYSQL_DATABASE
+  user: process.env.MYSQL_USER || "root", // Usa variáveis de ambiente
+  password: process.env.MYSQL_PASSWORD || "mamae123",
+  database: process.env.MYSQL_DATABASE || "userdb"
 });
 
 // Conectar ao banco de dados
