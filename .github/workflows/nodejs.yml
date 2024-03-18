@@ -34,6 +34,6 @@ jobs:
     - name: Install client mysql
       run: apt install mysql-client
     - name: Criar Tabelas
-      run: mysql -h 127.0.0.1 --port3306 -u root -p mamae@123 usersdb < estrutura.sql
+      run: mysql -h 127.0.0.1 --port3306 -u root -p ma123 usersdb < estrutura.sql
     - name: Run tests
       run: npm test
