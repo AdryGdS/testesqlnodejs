@@ -33,8 +33,8 @@ jobs:
     - name: Install client mysql
       run: sudo apt install mysql-client
     - name: Criar Tabelas
-      run: mysql -h 127.0.0.1 --ports3306 -u root -pmamae123 usersdb < estrutura.sql
-    - name: Run tests
+      run: mysql -h 127.0.0.1 --ports3306 -u root -pmamae123 teste < estrutura.sql
+    - name: Teste
       env:
         MYSQL_USER: root
         MYSQL_ROOT_PASSWORD: mamae123
