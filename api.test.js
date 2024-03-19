@@ -12,10 +12,14 @@ describe('Teste GET /users', () => {
   });
 });
 
-describe('Teste Post /users', () => {
+describe('Teste POST /users', () => {
   it('deve responder com status 201', async ()=> {
     const response = await supertest(app).post('/users').send ({name:"Fulano de Tal", email: "fulano@email.com"});
     expect(response.statusCode).toBe(201);
+    console.log("sls")
+    expect(response.body).toHaveProperty("id");
+    expect(response.body.id).toBeGreaterThan(0);
+    console.log("O id criado foi "+response.body.id)
   });
 });
 

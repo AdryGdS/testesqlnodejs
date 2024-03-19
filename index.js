@@ -30,8 +30,10 @@ app.post('/users', (req, res) => {
   const INSERT_USER_QUERY = `INSERT INTO users (name, email) VALUES (?, ?)`;
   connection.query(INSERT_USER_QUERY, [name, email], (err, results) => {
     if (err) throw err;
+    console.log(results);
     res.statusCode=201;
-    res.send('Usuário criado com sucesso');
+
+    res.send({id:results.insertId});
   });
 });
 
