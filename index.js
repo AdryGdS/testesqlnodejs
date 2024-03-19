@@ -30,7 +30,7 @@ app.post('/users', (req, res) => {
   const INSERT_USER_QUERY = `INSERT INTO users (name, email) VALUES (?, ?)`;
   connection.query(INSERT_USER_QUERY, [name, email], (err, results) => {
     if (err) throw err;
-    console.log(results);
+
     res.statusCode=201;
 
     res.send({id:results.insertId});
@@ -55,7 +55,26 @@ app.get('/users/:id', (req, res) => {
   });
 });
 
+app.put('/users/:id', (req, res) => {
+  const userId = req.params.id;
+  const {name, email} = req.body;
+  const UPDATE_USER_QUERY = `UPDATE users SET name=?, email=? WHERE id = ?`;
+  connection.query(UPDATE_USER_QUERY,[name, email, userId], (err, results) => {
+    if (err) throw err;
+    res.statusCode = 204;
+    res.json(results);
+  });
+});
 
+app.delete('/users/:id', (req, res) => {
+  const userId = req.params.id;
+  const DELETE_USER_QUERY = `DELETE FROM users WHERE id = ?`;
+  connection.query(DELETE_USER_QUERY,[userId], (err, results) => {
+    if (err) throw err;
+    res.statusCode = 204;
+    res.json(results);
+  });
+});
 
 // Iniciar o servidor
 const server = app.listen(port, () => {
