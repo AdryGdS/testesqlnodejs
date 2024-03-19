@@ -38,7 +38,7 @@ describe('Atualiza usuario PUT /users', () => {
 
 describe('Deleta usuario DELETE /users', () => {
   it('deve responder com status 204', async () => {
-    await supertest(app).post('/users').send('/users')});
+   const response = await supertest(app).post('/users').send('/users')});
     expect(response.statusCode).toBe(204);
   });
 
