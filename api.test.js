@@ -6,7 +6,7 @@ describe('Teste GET /users', () => {
     const response = await supertest(app).get('/users');
     expect(response.statusCode).toBe(200);
     expect(response.body).toBeInstanceOf(Array);
-    response.body.array.forEach(element => {
+    response.body.forEach(element => {
       expect(element).toHaveProperty("name");
     });
   });
