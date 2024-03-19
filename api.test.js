@@ -1,5 +1,6 @@
 const supertest = require('supertest');
 const {app, server, connection} = require('./index.js'); // Importe seu aplicativo Express
+const { response } = require('express');
 
 var idCriado;
 
@@ -35,14 +36,12 @@ describe('Atualiza usuario PUT /users', () => {
   });
 });
 
-
 describe('Deleta usuario DELETE /users', () => {
   it('deve responder com status 204', async () => {
-   const response = await supertest(app).delete('/users')});
-
+    const response = await supertest(app).delete('/users');
     expect(response.statusCode).toBe(204);
   });
-
+});
 
 afterAll(() => {
   server.close();
